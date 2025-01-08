@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Document</title>
+  </head>
+<body>
+      <div  class="bodyApp">
+  <header>
+  <div class="headerPrincipal">
+  <h1><div class="headerPrincipal-titulo"> Greetings </div>  
+    </h1>
+    </div>  
+</header>
+
+<div class="row texto">
+  <div class="catalog-part"  onclick=window.location.reload() >back</div>
+  <div class="catalog-part" onclick="showTemplate('template1')">present tense</div>
+    <div class="catalog-part" onclick="showTemplate('template2')">past tense</div>
+    <div class="catalog-part" onclick="showTemplate('template3')">future tense</div>
+  </div>
+  <br>
+  <h2 id="header1" class="texto" hidden>
+  <br>
+  <div id="template1" class="template">texto 1</div>
+  <div id="template2" class="template">texto 2</div>
+  <div id="template3" class="template">texto 3</div>
+</h2>
+
+<script>
+function showTemplate(templateId) {
+  document.getElementById("header1").style.display="block";
+  const templates = document.getElementsByClassName('template');
+    for (let i = 0; i < templates.length; i++) {
+      templates[i].classList.remove('active');
+    }
+// Mostrar la plantilla seleccionada
+  const selectedTemplate = document.getElementById(templateId);
+  selectedTemplate.classList.add('active');
+}
+</script>
+</body>
+</html>

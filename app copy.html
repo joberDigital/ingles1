@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="bodyApp">
+    <header>
+      <div class="headerPrincipal">
+        <h1>
+          <div class="headerPrincipal-titulo"> Greetings </div>
+        </h1>
+      </div>      
+    </header>
+    <main>
+      <br>
+      <div>
+      </div>
+    </main>
+
+<script>
+const container = document.createElement('div');
+container.innerHTML = `
+  <div class="row texto">
+    <div class="catalog-part" onclick="showTemplate('template2')">present tense</div>
+    <div class="catalog-part" onclick="showTemplate('template3')">past tense</div>
+    <div class="catalog-part" onclick="showTemplate('template1')">future tense</div>
+  </div>
+
+  <br>
+
+  <div id="template1" class="template"></div>
+  <div id="template2" class="template"></div>
+  <div id="template3" class="template"></div>
+`;
+
+document.body.appendChild(container);
+
+// JavaScript (showTemplate function remains the same)
+function showTemplate(templateId) {
+  const templates = document.getElementsByClassName('template');
+  for (let i = 0; i < templates.length; i++) {
+    templates[i].classList.remove('active');
+  }
+
+  const selectedTemplate = document.getElementById(templateId);
+  selectedTemplate.classList.add('active');
+
+  const header = document.querySelector('main');
+  switch (templateId) {
+    case 'template1':
+      header.textContent = "Future Tense";
+      break;
+    case 'template2':
+      header.textContent = "Present Tense";
+      break;
+    case 'template3':
+      header.textContent = "Past Tense";
+      break;
+  }
+}
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
