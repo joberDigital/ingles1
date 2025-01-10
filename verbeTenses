@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Document</title>
+<style>
+  body {
+    background-color: #f0f0f0; /* Gray 300 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 1180px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid var(--gray-300, #DEE2E7);
+    background: #FFF;
+    margin: 0 auto; 
+    margin-bottom:24px;
+}
+.template {
+display: none; /* Inicialmente oculta todas las plantillas */
+}
+.active {
+display: block;
+}
+
+
+.bodyApp {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    background-image: url('https://actechalumni.org/wp-content/uploads/elementor/thumbs/applied-science-phjf9zqgj0as3u2oh9ht3zwemu8mw14kkyhd9koso8.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+   width: auto;
+    height:auto;
+     
+      }
+
+.headerPrincipal {
+    background: transparent;
+    backdrop-filter: blur(2px); 
+    padding: 5px 10px;
+  text-align: end;
+  margin: 5px;
+  border-radius: 10%;
+  border:10px double;
+  border-top: none;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  box-shadow:inset 10px -10px 25px black;
+  }
+  .headerPrincipal-titulo {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 3px gainsboro;
+  }
+.row{
+    display: flex;
+    flex-direction: row;
+    margin:0 50px;
+
+}
+.texto{
+border: groove 5px #808285;
+width: auto;
+padding: 10px;
+font-size: 10px;
+background: rgb(198, 198, 189);
+}
+
+.catalog-part{
+    font-family: Proxima Nova, helvetica neue, helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 50%;
+    color: #ffffff;
+    border-color: white;
+    box-shadow: inset 0 3px 5px white;
+    width: auto;
+    padding: 10px;
+    margin: 5px 1px 0px 0px;
+    align-items: center;
+    color: inherit;
+    border:solid 1px ;
+    border-top: none;
+    border-left: none;
+}
+.catalog-part:hover {
+    background-color: #ddd;
+  }
+
+  .catalog-part.active {
+    background-color: #4CAF50; /* Green on hover */
+    color: white;
+  }
+/* botones */
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px; /* Espacio entre botones */
+}
+
+.siginificado{
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    background-color: #0077cc;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+ 
+    padding:10px 0;
+    box-shadow:inset 10px -10px 25px black;      
+    font-size: 10px;
+}
+.inglesPresente{
+    background-color: #b0cadd;
+    color: #fff;
+    text-align: end;
+    box-shadow:inset 10px -10px 25px black;      
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* Add padding here */
+    width: auto;
+    height: auto;
+    letter-spacing: 1px;
+    /* line-break: strict;
+    overflow-wrap: break-word; */
+    tab-size: 2;
+text-indent: 0%;
+/* word-break: break-all; */
+margin: 20px;
+box-sizing: border-box;
+}
+.headerPrincipal .inglesPresente:nth-child(2){
+display: flex;
+padding-left: 30%;
+text-align: end;
+}
+   
+</style>
+</head>
+
+<body>
+  <div class="bodyApp">
+    <header>
+      <div class="headerPrincipal">
+        <h1>
+          <div class="headerPrincipal-titulo"> GRAMMAR </div>
+        </h1>
+      </div>
+      <div id="header1"></div>
+      <div class="text" onclick="window.location.reload()">volver</div>
+    </header>
+    <script>
+      const templateId = document.getElementById("header1");
+
+function showTemplate1(templateId) {
+        const container = document.createElement('div');
+        container.innerHTML = `
+          <div class="headerPrincipal">
+            <div class="row">
+              <div class="catalog-part" onclick="showTemplate('template1')">present tense</div>
+              <div class="catalog-part" onclick="showTemplate('template2')">past tense</div>
+              <div class="catalog-part" onclick="showTemplate('template3')">future tense</div>
+            </div>
+            <h2 id=${templateId} class="headerPrincipal">
+              <div id="template1" class="template"></div>
+              <div id="template2" class="template"></div>
+              <div id="template3" class="template"></div>
+            </h2>
+          </div>
+        `;
+document.body.appendChild(container);
+}
+
+function showTemplate(templateId){
+  const buttons = document.querySelectorAll('.catalog-part');
+        buttons.forEach(button => {
+        button.classList.remove('active');
+});
+const templates = document.getElementsByClassName('template');
+  for (let i = 0; i < templates.length; i++) {
+    templates[i].classList.remove('active');
+  }
+const selectedTemplate = document.getElementById(templateId);
+selectedTemplate.classList.add('active');
+     // Usage example:
+
+switch (templateId) {
+          case 'template1':
+            selectedTemplate.innerHTML = "<p class='siginificado'>Used to describe actions that happen in the current moment or general truths</p>"
++
+            "<p class='inglesPresente'> She studies English every day.<p>"
+            +
+
+"<p class='inglesPresente'>I wake up at 7:00 a.m. every day.<p>"
+  +
+  "<p class='inglesPresente'>I eat breakfast before I go to work.<p>"
+    +
+    "<p class='inglesPresente'> I work from 9:00 a.m. to 5:00 p.m. on weekdays.<p>"
+      +
+"<p class='inglesPresente'>I exercise in the evening after work.<p>"
+  +
+"<p class='inglesPresente'>I go to bed at 10:30 p.m. every night.</p>" 
++
+"<p onclick='traducirPresenteIngles()'>spanish</p>";
+            console.log(selectedTemplate)
+            break;
+          case 'template2':
+          selectedTemplate.innerHTML = "<p class='siginificado'>Used to talk about actions that happened in the past.</p>"
++
+"<p class='inglesPresente'> He visited his grandmother last weekend.<p>"
+  +
+"<p class='inglesPresente'>Last weekend, I visited my friend’s house on Saturday.<br> We had lunch together and then went for a walk in the park.<br> On Sunday, I spent the day relaxing at home.<br> I watched a movie, read a book, and cooked a nice dinner.<br> It was a peaceful and enjoyable weekend.</p>" 
++
+"<p onclick='traducirPresenteIngles()'>spanish</p>";
+
+            break;
+          case 'template3':
+            selectedTemplate.innerHTML = selectedTemplate.innerHTML = "<p class='siginificado'>Used to describe actions that will happen in the future.</p>"
++
+            "<p class='inglesPresente'>They will travel to Spain next year.<p>"
+              +
+"<p class='inglesPresente'>I will start a new project at work next month.</p>" 
++
+"<p class='inglesPresente'>I will visit my family during the holidays.</p>" 
++
+"<p class='inglesPresente'>I will take a short trip to the beach for a weekend getaway.</p>" 
++
+"<p onclick='traducirPresenteIngles()'>spanish</p>";
+            
+            break;
+        }
+document.querySelector(`.catalog-part[onclick="showTemplate('${templateId}')"]`).classList.add('active');   
+  }
+showTemplate1(templateId)
+
+function traducirPresenteIngles(){
+alert("not function")
+}
+</script>
+</body>
+</html>
